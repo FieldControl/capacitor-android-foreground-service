@@ -1,0 +1,370 @@
+{
+  "api": {
+    "name": "ForegroundServicePlugin",
+    "slug": "foregroundserviceplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "moveToForeground",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [
+          {
+            "name": "since",
+            "text": "0.3.0"
+          },
+          {
+            "name": "experimental",
+            "text": "This method is experimental and may not work as expected."
+          }
+        ],
+        "docs": "Moves the app to the foreground.\n\nOn Android SDK 23+, the user must grant the manage overlay permission.\nYou can use the `requestManageOverlayPermission()` method to request the\npermission and the `checkManageOverlayPermission()` method to check if the\npermission is granted.\n\nOnly available for Android.",
+        "complexTypes": [],
+        "slug": "movetoforeground"
+      },
+      {
+        "name": "startForegroundService",
+        "signature": "(options: StartForegroundServiceOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "StartForegroundServiceOptions"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [
+          {
+            "name": "since",
+            "text": "0.0.1"
+          }
+        ],
+        "docs": "Starts the foreground service.\n\nOnly available for Android.",
+        "complexTypes": [
+          "StartForegroundServiceOptions"
+        ],
+        "slug": "startforegroundservice"
+      },
+      {
+        "name": "stopForegroundService",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [
+          {
+            "name": "since",
+            "text": "0.0.1"
+          }
+        ],
+        "docs": "Stops the foreground service.\n\nOnly available for Android.",
+        "complexTypes": [],
+        "slug": "stopforegroundservice"
+      },
+      {
+        "name": "requestManageOverlayPermission",
+        "signature": "() => Promise<ManageOverlayPermissionResult>",
+        "parameters": [],
+        "returns": "Promise<ManageOverlayPermissionResult>",
+        "tags": [
+          {
+            "name": "since",
+            "text": "0.3.0"
+          }
+        ],
+        "docs": "Request the manage overlay permission.\n\nOnly available for Android.",
+        "complexTypes": [
+          "ManageOverlayPermissionResult"
+        ],
+        "slug": "requestmanageoverlaypermission"
+      },
+      {
+        "name": "checkManageOverlayPermission",
+        "signature": "() => Promise<ManageOverlayPermissionResult>",
+        "parameters": [],
+        "returns": "Promise<ManageOverlayPermissionResult>",
+        "tags": [
+          {
+            "name": "since",
+            "text": "0.3.0"
+          }
+        ],
+        "docs": "Check if the overlay permission is granted.\n\nOnly available for Android.",
+        "complexTypes": [
+          "ManageOverlayPermissionResult"
+        ],
+        "slug": "checkmanageoverlaypermission"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: 'buttonClicked', listenerFunc: ButtonClickedEventListener) => Promise<PluginListenerHandle> & PluginListenerHandle",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "'buttonClicked'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "ButtonClickedEventListener"
+          }
+        ],
+        "returns": "Promise<PluginListenerHandle> & PluginListenerHandle",
+        "tags": [
+          {
+            "name": "since",
+            "text": "0.2.0"
+          }
+        ],
+        "docs": "Called when a notification button is clicked.\n\nOnly available on iOS.",
+        "complexTypes": [
+          "PluginListenerHandle",
+          "ButtonClickedEventListener"
+        ],
+        "slug": "addlistenerbuttonclicked"
+      },
+      {
+        "name": "removeAllListeners",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [
+          {
+            "name": "since",
+            "text": "0.2.0"
+          }
+        ],
+        "docs": "Remove all listeners for this plugin.",
+        "complexTypes": [],
+        "slug": "removealllisteners"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "StartForegroundServiceOptions",
+      "slug": "startforegroundserviceoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "body",
+          "tags": [
+            {
+              "text": "0.0.1",
+              "name": "since"
+            },
+            {
+              "text": "\"This is the body of the notification\"",
+              "name": "example"
+            }
+          ],
+          "docs": "The body of the notification, shown below the title.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "buttons",
+          "tags": [
+            {
+              "text": "0.2.0",
+              "name": "since"
+            }
+          ],
+          "docs": "The buttons to show on the notification.\n\nOnly available for Android (SDK 24+).",
+          "complexTypes": [
+            "NotificationButton"
+          ],
+          "type": "NotificationButton[] | undefined"
+        },
+        {
+          "name": "id",
+          "tags": [
+            {
+              "text": "0.0.1",
+              "name": "since"
+            },
+            {
+              "text": "123",
+              "name": "example"
+            }
+          ],
+          "docs": "The notification identifier.",
+          "complexTypes": [],
+          "type": "number"
+        },
+        {
+          "name": "smallIcon",
+          "tags": [
+            {
+              "text": "0.0.1",
+              "name": "since"
+            },
+            {
+              "text": "\"ic_stat_icon_config_sample\"",
+              "name": "example"
+            }
+          ],
+          "docs": "The status bar icon for the notification.\n\nIcons should be placed in your app's `res/drawable` folder. The value for\nthis option should be the drawable resource ID, which is the filename\nwithout an extension.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "tags": [
+            {
+              "text": "0.0.1",
+              "name": "since"
+            },
+            {
+              "text": "\"This is the title of the notification\"",
+              "name": "example"
+            }
+          ],
+          "docs": "The title of the notification.",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "NotificationButton",
+      "slug": "notificationbutton",
+      "docs": "",
+      "tags": [
+        {
+          "text": "0.2.0",
+          "name": "since"
+        }
+      ],
+      "methods": [],
+      "properties": [
+        {
+          "name": "title",
+          "tags": [
+            {
+              "text": "0.2.0",
+              "name": "since"
+            },
+            {
+              "text": "\"Stop\"",
+              "name": "example"
+            }
+          ],
+          "docs": "The button title.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "tags": [
+            {
+              "text": "0.2.0",
+              "name": "since"
+            },
+            {
+              "text": "123",
+              "name": "example"
+            }
+          ],
+          "docs": "The button identifier.\n\nThis is used to identify the button when\nthe `buttonClicked` event is emitted.",
+          "complexTypes": [],
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "ManageOverlayPermissionResult",
+      "slug": "manageoverlaypermissionresult",
+      "docs": "",
+      "tags": [
+        {
+          "text": "0.3.0",
+          "name": "since"
+        }
+      ],
+      "methods": [],
+      "properties": [
+        {
+          "name": "granted",
+          "tags": [
+            {
+              "text": "0.3.0",
+              "name": "since"
+            },
+            {
+              "text": "true",
+              "name": "example"
+            }
+          ],
+          "docs": "Whether the permission is granted.\n\nThis is always `true` on Android SDK < 23.",
+          "complexTypes": [],
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "PluginListenerHandle",
+      "slug": "pluginlistenerhandle",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "remove",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "() => Promise<void>"
+        }
+      ]
+    },
+    {
+      "name": "ButtonClickedEvent",
+      "slug": "buttonclickedevent",
+      "docs": "",
+      "tags": [
+        {
+          "text": "0.2.0",
+          "name": "since"
+        }
+      ],
+      "methods": [],
+      "properties": [
+        {
+          "name": "buttonId",
+          "tags": [
+            {
+              "text": "0.2.0",
+              "name": "since"
+            }
+          ],
+          "docs": "The button identifier.",
+          "complexTypes": [],
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "typeAliases": [
+    {
+      "name": "ButtonClickedEventListener",
+      "slug": "buttonclickedeventlistener",
+      "docs": "",
+      "types": [
+        {
+          "text": "(event: ButtonClickedEvent): void",
+          "complexTypes": [
+            "ButtonClickedEvent"
+          ]
+        }
+      ]
+    }
+  ],
+  "pluginConfigs": []
+}
